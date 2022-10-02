@@ -1,5 +1,7 @@
-package com.heroslender.takeawat.menu;
+package com.heroslender.takeawat.service;
 
+import com.heroslender.takeawat.entity.Menu;
+import com.heroslender.takeawat.repository.MenuRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +11,7 @@ import java.util.*;
 
 @Service
 public class MenuService {
-    private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
+    private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     @Autowired MenuRepository repository;
 
@@ -26,13 +28,13 @@ public class MenuService {
 
     public List<Menu> getMenus(String date) {
         try {
-            return getMenus(DATE_FORMAT.parse(date));
+            return getMenus(dateFormat.parse(date));
         } catch (ParseException e) {
-            throw new IllegalArgumentException("Invalid date format: " + date + "; expected " + DATE_FORMAT.toPattern());
+            throw new IllegalArgumentException("Invalid date format: " + date + "; expected " + dateFormat.toPattern());
         }
     }
 
     public List<Menu> getMenus(Date date) {
-        return repository.findByDate(DATE_FORMAT.format(date)).get();
+        return repository.findByDate(dateFormat.format(date)).orElse(Collections.emptyList());
     }
 }

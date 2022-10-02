@@ -1,4 +1,4 @@
-package com.heroslender.takeawat.menu;
+package com.heroslender.takeawat.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;

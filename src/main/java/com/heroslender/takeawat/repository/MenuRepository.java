@@ -1,5 +1,6 @@
-package com.heroslender.takeawat.menu;
+package com.heroslender.takeawat.repository;
 
+import com.heroslender.takeawat.entity.Menu;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
