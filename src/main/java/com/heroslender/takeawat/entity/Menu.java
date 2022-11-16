@@ -33,4 +33,12 @@ public class Menu {
 
     @Column(name = "description")
     private String description;
+
+    public Menu(String name, String date, double price, double halfPrice, String description) {
+        this.name = name;
+        this.date = date;
+        this.price = price;
+        this.halfPrice = halfPrice;
+        this.description = description;
+    }
 }
